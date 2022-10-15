@@ -1,0 +1,5 @@
+django
+python-dotenv
+psycopg2
+django-prometheus
+waitress

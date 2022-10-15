@@ -1,0 +1,11 @@
+*.iml
+.DS_Store
+.idea
+.idea/**
+.project
+.vscode
+venv/**
+out/**
+.env
+**/__pycache__/**
+*.pyc
