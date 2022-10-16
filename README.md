@@ -1,3 +1,5 @@
+![example workflow](https://github.com/azhrei251/olive-www/actions/workflows/docker-image.yml/badge.svg)
+
 ## To run locally ##
 python manage.py runserver host:port
 
