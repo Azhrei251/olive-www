@@ -1,4 +1,4 @@
-FROM python:3
+FROM python:3-alpine
 COPY . /django-site
 WORKDIR /django-site
 RUN pip install -r requirements.txt

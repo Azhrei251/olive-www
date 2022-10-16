@@ -2,7 +2,7 @@
 python manage.py runserver host:port
 
 ## To run via waitress (prod) ##
-python listsite/server.py
+python web/server.py
 
 ## Run via docker ##
 - run docker build --tag olive-www .

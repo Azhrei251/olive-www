@@ -1,6 +1,6 @@
 django
 python-dotenv
-psycopg2
+psycopg2-binary
 django-prometheus
 waitress
 whitenoise
