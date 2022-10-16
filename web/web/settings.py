@@ -75,6 +75,20 @@ TEMPLATES = [
     },
 ]
 
+# Database
+# https://docs.djangoproject.com/en/4.1/ref/settings/#databases
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django_prometheus.db.backends.postgresql',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
+    }
+}
+
 WSGI_APPLICATION = 'web.wsgi.application'
 
 # Password validation
@@ -124,3 +138,14 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+
+# Basic auth
+raw_users = os.getenv('BASICAUTH_USERS')
+if raw_users:
+    allowed_users = {}
+    for item in raw_users.split(","):
+        if item:
+            user, pw = raw_users.split(":")
+            if user and pw:
+                allowed_users[user] = pw
+    BASICAUTH_USERS = allowed_users

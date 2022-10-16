@@ -20,6 +20,12 @@ Locally via .env or normal environment vars. In the docker image only via enviro
 - EMAIL_HOST_PASSWORD: Your SMTP password
 - EMAIL_PORT: Your SMTP port
 - EMAIL_USE_TLS: Whether to us TLS or not
+- DB_NAME: Your db name
+- DB_USER: Your db user
+- DB_PASSWORD: Your db password
+- DB_HOST: Your db host
+- DB_PORT: Your db port
+- BASICAUTH_USERS: Comma delimited key:value pairs for users that are allowed to access basic auth resources
 
 ## To generate migrations ##
 - python manage.py makemigrations
