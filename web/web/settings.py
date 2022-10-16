@@ -27,11 +27,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG') == 'True'
 
-ALLOWED_HOSTS = [
-    '192.168.0.3',
-    'www.olivebranchpsychology.com.au',
-    'localost'
-]
+raw_hosts = os.getenv('ALLOWED_HOSTS')
+if raw_hosts:
+    ALLOWED_HOSTS = [item for item in raw_hosts.split(",") if item]
 
 # Application definition
 
