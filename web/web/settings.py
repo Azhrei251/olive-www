@@ -149,3 +149,5 @@ if raw_users:
             if user and pw:
                 allowed_users[user] = pw
     BASICAUTH_USERS = allowed_users
+
+PROMETHEUS_EXPORT_MIGRATIONS = False
