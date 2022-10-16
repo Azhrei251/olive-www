@@ -1,6 +1,6 @@
 FROM python:3
-COPY . /ShoppingListServer
-WORKDIR /ShoppingListServer
+COPY . /django-site
+WORKDIR /django-site
 RUN pip install -r requirements.txt
 RUN mkdir /logs
-CMD python listsite/server.py
+CMD python web/server.py
