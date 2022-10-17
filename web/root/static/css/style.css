@@ -136,11 +136,22 @@ hr {
 	font-size: 16px;
 	border-radius: 0;
 	margin-top: 20px;
+	margin-bottom: 50px;
 }
 .btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active {
 	color: #fff;
 	background-color: #121d1f;
 	border-color: #121d1f;
+}
+.header-img {
+	background: url(../img/intro-bg.jpg) no-repeat center top;
+	background-color: #e5e5e5;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	padding-top: 130px;
+	padding-bottom: 130px;
 }
 /* Header Section */
 .intro {
@@ -149,18 +160,12 @@ hr {
 	padding: 0;
 	text-align: center;
 	color: #333;
-	background: url(../img/intro-bg.jpg) no-repeat center top;
-	background-color: #e5e5e5;
-	-webkit-background-size: cover;
-	-moz-background-size: cover;
-	background-size: cover;
-	-o-background-size: cover;
 }
 .section-title.center {
 	padding: 10px 0 40px 0;
 }
 .intro h1 {
-	font-size: 60px;
+	font-size: 50px;
 	font-weight: 400;
 	letter-spacing: 2px;
 	text-transform: uppercase;
@@ -178,7 +183,7 @@ header .intro-text {
 }
 /* About Section */
 #about {
-	padding: 120px 0;
+	padding: 40px 0;
 }
 #about .about-text {
 	margin-left: 10px;
@@ -325,7 +330,7 @@ ol.type li a:hover {
 }
 /* Contact Section */
 #contact {
-	padding: 120px 0 60px 0;
+	padding: 40px 0 0 0;
 }
 #contact h3 {
 	padding-top: 20px;
@@ -334,7 +339,7 @@ ol.type li a:hover {
 	color: #fff;
 }
 #contact form {
-	padding: 30px 0;
+	padding: 0px 0;
 }
 #contact .text-danger {
 	color: #E87E04;
