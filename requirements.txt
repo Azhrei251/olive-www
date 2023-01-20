@@ -5,3 +5,4 @@ django-prometheus
 waitress
 whitenoise
 django-basicauth
+requests

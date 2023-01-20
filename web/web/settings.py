@@ -30,6 +30,8 @@ DEBUG = os.getenv('DEBUG') == 'True'
 raw_hosts = os.getenv('ALLOWED_HOSTS')
 if raw_hosts:
     ALLOWED_HOSTS = [item for item in raw_hosts.split(",") if item]
+else:
+    ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -140,6 +142,9 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == 'True'
+SERVER_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+SLACK_WEBHOOK_URL = os.getenv('SLACK_WEBHOOK_URL')
+SLACK_ICON = os.getenv('SLACK_ICON')
 
 # Basic auth
 raw_users = os.getenv('BASICAUTH_USERS')
@@ -151,4 +156,10 @@ if raw_users:
             if user and pw:
                 allowed_users[user] = pw
     BASICAUTH_USERS = allowed_users
+
+CSRF_TRUSTED_ORIGINS = ["https://" + item for item in ALLOWED_HOSTS if item]
+
+ADMINS = [(os.getenv('ADMIN_NAME'), os.getenv('ADMIN_EMAIL'))]
+
+DEFAULT_EXCEPTION_REPORTER = 'web.errors.CustomExceptionReporter'
 
