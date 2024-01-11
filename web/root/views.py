@@ -1,3 +1,5 @@
+import sys
+
 from django.core.mail import BadHeaderError
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -5,9 +7,11 @@ from django.core.mail import EmailMultiAlternatives
 from django.views import generic
 from django.utils.decorators import method_decorator
 from basicauth.decorators import basic_auth_required
-from web.settings import DEFAULT_FROM_EMAIL
+from web.settings import DEFAULT_FROM_EMAIL, SLACK_WEBHOOK_URL, SLACK_ICON
 from .forms import ContactForm
 from .models import View
+import json
+import requests
 
 
 def index_view(request):
@@ -17,6 +21,10 @@ def index_view(request):
     else:
         form = ContactForm(request.POST)
         if form.is_valid():
+            slack_message = "Email: " + form.cleaned_data["email"] + "\nName: " + form.cleaned_data["name"] + "\nMessage: " + \
+                      form.cleaned_data["message"]
+
+            send_slack_notif(slack_message)
             name = form.cleaned_data["name"]
             contact_email = form.cleaned_data["email"]
             body = form.cleaned_data['message']
@@ -35,6 +43,33 @@ def index_view(request):
                 return HttpResponse("Invalid header found.")
             return redirect("success")
     return render(request, "index.html", {"form": form})
+
+
+def send_slack_notif(message):
+    title = f"New contact :zap:"
+    slack_data = {
+        "username": "Azhapps Contact Bot",
+        "icon_emoji": SLACK_ICON,
+        "channel": "ob-contacts",
+        "attachments": [
+            {
+                "color": "#9733EE",
+                "fields": [
+                    {
+                        "title": title,
+                        "value": message,
+                        "short": "false",
+                    }
+                ]
+            }
+        ]
+    }
+    byte_length = str(sys.getsizeof(slack_data))
+    headers = {'Content-Type': "application/json", 'Content-Length': byte_length}
+    response = requests.post(SLACK_WEBHOOK_URL, data=json.dumps(slack_data), headers=headers)
+    if response.status_code != 200:
+        raise Exception(response.status_code, response.text)
+    return redirect("success")
 
 
 def success_view(request):
