@@ -1,9 +1,9 @@
-django~=4.2.9
-python-dotenv~=1.0.0
+django~=4.2.13
+python-dotenv~=1.0.1
 psycopg2-binary
 django-prometheus
-waitress~=2.1.2
+waitress~=3.0.0
 whitenoise~=6.6.0
 django-basicauth
-requests~=2.31.0
+requests~=2.32.3
 spamcheck~=1.0.4
